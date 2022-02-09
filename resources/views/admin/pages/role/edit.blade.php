@@ -32,6 +32,11 @@
             <h4 style="text-align: center">Permissions list</h4>
         </div>
 
+        <div style="margin-left: 120px">
+            <input type="checkbox" id="select-all">
+            <span style="font-size: 18px">Select All / Unselect All</span>
+        </div>
+
         <div class="mt-5 mt-3" style="margin-left: 100px">
             @foreach($modules as $module)
                 <div class="mb-8">
@@ -57,3 +62,17 @@
     </form>
 
 @endsection
+
+@push('js')
+    <script>
+        $(document).ready(function() {
+            $('#select-all').click(function() {
+                var checked = this.checked;
+                $('input[type="checkbox"]').each(function() {
+                    this.checked = checked;
+                });
+            })
+        });
+    </script>
+
+@endpush
