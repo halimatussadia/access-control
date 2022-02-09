@@ -60,17 +60,19 @@ class RoleController extends Controller
     public function edit($id)
     {
         $role=Role::find($id);
-        return view('admin.pages.role.edit',compact('role'));
+        $modules = Module::with('permissions')->get();
+        return view('admin.pages.role.edit',compact('role','modules'));
     }
 
     public function update(Request $request,$id): RedirectResponse
     {
-        $role=Role::find($id);
+        $role=Role::where('id',$id)->first();
 
         $role->update([
             'name'=>$request->name,
             'slug'=> Str::slug($request->name),
         ]);
+        $role->permissions()->sync($request->permission_ids);
         return redirect()->route('role.list')->with('success','Role Updated Successfully.');
     }
 }

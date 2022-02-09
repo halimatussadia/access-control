@@ -40,7 +40,7 @@
                 <td></td>
                 <td>
                     <a class="btn btn-danger" href="">Delete</a>
-                    <a class="btn btn-warning" href="">Edit</a>
+                    <a class="btn btn-warning" href="{{route('role.edit',$role->id)}}">Edit</a>
                 </td>
             </tr>
         @endforeach

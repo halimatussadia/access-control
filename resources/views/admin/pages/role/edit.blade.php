@@ -28,6 +28,31 @@
             <input name="name" value="{{$role->name}}" placeholder="Enter Category Name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
         </div>
 
+        <div>
+            <h4 style="text-align: center">Permissions list</h4>
+        </div>
+
+        <div class="mt-5 mt-3" style="margin-left: 100px">
+            @foreach($modules as $module)
+                <div class="mb-8">
+                    <div>
+                        <h6 style="margin-left: 25px">{{$module->name}}</h6>
+                    </div>
+
+                    @foreach($module->permissions as $permission)
+                        <div style="margin-left: 50px; margin-top: 5px">
+                            <input {{(in_array($permission->id,$role->permissions->pluck('id')->toArray())) ? 'checked' : ''}}
+                                type="checkbox"
+                                name="permission_ids[]"
+                                value="{{$permission->id}}" multiple
+                            />
+                            <span style="font-size: 15px;margin-top: 2px">{{$permission->name}}</span>
+                        </div>
+                    @endforeach
+                </div>
+            @endforeach
+        </div>
+
         <button type="submit" class="btn btn-success">Submit</button>
     </form>
 
