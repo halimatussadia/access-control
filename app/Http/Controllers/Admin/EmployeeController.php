@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Employee;
+use App\Jobs\SendEmailJob;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use function redirect;
-use function view;
+use Illuminate\Support\Str;
 
 class EmployeeController extends Controller
 {
@@ -27,23 +26,27 @@ class EmployeeController extends Controller
     {
         $request->validate([
             'name'      => 'required',
-            'email'     => 'required|email',
+            'email'     => 'required|email|unique:users,email',
             'address'   => 'required',
-            'phone'     => 'required|max:16|min:11',
+            'phone'     => 'required|max:16|min:11||unique:users,phone',
             'role_id'   => 'required',
         ]);
+
        try{
-           User::create([
+         $password = Str::random(8);
+         $user = User::create([
                'name'      =>$request->name,
                'email'     =>$request->email,
                'address'   =>$request->address,
                'phone'     =>$request->phone,
                'role_id'   =>$request->role_id,
-               'password'  =>bcrypt($request->password),
+               'password'  =>bcrypt($password),
            ]);
+            SendEmailJob::dispatch($user,$password);
            return redirect()->route('user.list')->with('success','User Created successfully');
 
        }catch (\Throwable $throwable){
+
            return redirect()->route('user.list')->with('error','something went wrong');
 
        }

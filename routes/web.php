@@ -21,15 +21,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    $products=Product::all();
-//    return view('website.pages.home',compact('products'));
-//});
-
-Route::get('/',[HomeController::class,'home'])->name('website');
-Route::post('/registration',[UserController::class,'registration'])->name('user.registration');
-Route::post('/login',[UserController::class,'login'])->name('user.login');
-Route::get('/logout',[UserController::class,'logout'])->name('user.logout');
 
 
 Route::get('/admin/login',[AdminUserController::class,'login'])->name('admin.login');
