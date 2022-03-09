@@ -9,7 +9,7 @@
                     </a>
                 </li>
             @endif
-            @if(hasAnyPermissions('user.list'))
+            @if(hasAnyPermissions('order.list'))
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('order.list')}}">
                         <span data-feather="file"></span>
