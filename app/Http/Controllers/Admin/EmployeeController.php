@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Jobs\SendEmailJob;
 use App\Models\Role;
 use App\Models\User;
+use Devfaysal\Muthofun\Facades\Muthofun;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -42,11 +43,12 @@ class EmployeeController extends Controller
                'role_id'   =>$request->role_id,
                'password'  =>bcrypt($password),
            ]);
-            SendEmailJob::dispatch($user,$password);
+           SendEmailJob::dispatch($user,$password);
+           Muthofun::send($user->phone , 'Hello Sadia,How are you?');
            return redirect()->route('user.list')->with('success','User Created successfully');
 
        }catch (\Throwable $throwable){
-
+           dd($throwable->getMessage());
            return redirect()->route('user.list')->with('error','something went wrong');
 
        }
