@@ -35,9 +35,8 @@
                 <input name="name" placeholder="Enter Role Name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
             </div>
 
-            <div>
-                <h4 style="text-align: center">Permissions list</h4>
-            </div>
+            <div class="text-center text-2xl">Permissions list</div>
+
             <div style="margin-left: 120px">
                 <input type="checkbox" id="select-all">
                 <span style="font-size: 18px">Select All / Unselect All</span>

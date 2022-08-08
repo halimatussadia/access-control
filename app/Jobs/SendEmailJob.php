@@ -40,3 +40,5 @@ class SendEmailJob implements ShouldQueue
         Notification::send($this->user, new EmailNotify($this->user,$this->password));
     }
 }
+
+
