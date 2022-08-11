@@ -23,8 +23,8 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/admin/login',[AdminUserController::class,'login'])->name('admin.login');
-Route::post('/admin/do-login',[AdminUserController::class,'doLogin'])->name('admin.doLogin');
+Route::get('/login',[AdminUserController::class,'login'])->name('admin.login');
+Route::post('/do-login',[AdminUserController::class,'doLogin'])->name('admin.doLogin');
 
 Route::group(['prefix'=>'admin'],function (){
     Route::get('/logout', [AdminUserController::class, 'logout'])->name('admin.logout');

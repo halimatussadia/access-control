@@ -48,7 +48,6 @@ class EmployeeController extends Controller
            return redirect()->route('user.list')->with('success','User Created successfully');
 
        }catch (\Throwable $throwable){
-           dd($throwable->getMessage());
            return redirect()->route('user.list')->with('error','something went wrong');
 
        }
