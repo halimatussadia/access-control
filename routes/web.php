@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\TransportationController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
@@ -68,6 +69,9 @@ Route::group(['prefix'=>'admin'],function (){
         Route::get('role/delete/{id}', [RoleController::class, 'delete'])->name('role.delete');
 
     });
+
+    Route::get('/travel',[TransportationController::class,'list']);
+    Route::post('/store',[TransportationController::class,'store'])->name('travel_transportation_expenses.store');
 });
 
 
