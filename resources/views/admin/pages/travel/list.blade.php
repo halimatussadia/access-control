@@ -554,10 +554,9 @@
             });
 
 
-
-        function addRow() {
             var i = 0;
-            ++i;
+        function addRow() {
+            i = i+1;
             var tr = '<tr><td><input name="data[' + i + '][travel_date]" autocomplete="off" id="" class="form-control copy_travel_date_value " placeholder="Date"  type="date" ></td><td><input name="data[' + i + '][remarks]" autocomplete="off" id="copy_remarks_value" class="form-control copy_remarks_value" placeholder="Remarks"></td><td><input name="data[' + i + '][meal_expense]" autocomplete="off" id="copy_meal_expense_value" class="form-control copy_meal_expense_value" placeholder="Meal Expense." type="number" ></td><td><input name="data[' + i + '][description]" autocomplete="off" class="form-control copy_description_value" placeholder="Description" required="" ></td><td><input name="data[' + i + '][accomendation_expense]" id="copy_accomendation_expense_value" class="form-control copy_accomendation_expense_value" placeholder="Accomendation expensef." type="number" ></td><td><input name="data[' + i + '][km_travelled]" autocomplete="off" class="form-control copy_km_travelled_value" placeholder="Km Travelled" required="" ></td><td><input name="data[' + i + '][travel_mode]" autocomplete="off" class="form-control copy_travel_mode_value" placeholder="Travel mode" required=""></td><td><input name="data[' + i + '][fare_amount]" autocomplete="off" id="copy_fare_amount" class="form-control copy_fare_amount" type="number" placeholder="Fare Amount"></td><td><input type="number" step="any" name="data[' + i + '][other_expenses]" autocomplete="off" class="form-control copy_other_expenses_value" type="number" step="any" placeholder="Other Expenses" required=""></td><td><input type="number" name="data[' + i + '][exchge_rate]" autocomplete="off" id="copy_exchge_rate_value"   class="form-control copy_exchge_rate_value" placeholder="Exchange rate"></td><td class="remove" style="text-align: center"><a href="#" class="btn-sm btn-danger" onclick="deleteRow()"><i class="fa fa-times"></i></a></td></tr>';
 
             $('#new_item_table tbody').append(tr);
@@ -591,7 +590,7 @@
 
         $("#add_new_item_div").hide();
 
-       
+
 
         function check_uncheck_checkbox(isChecked) {
             if (isChecked) {
